@@ -1,0 +1,33 @@
+.menu-system-title{
+    text-align: center;
+}
+header{
+    height: 70px;
+    border-bottom: 1px black dashed;
+}
+.menu-appetizers , .menu-beverages , .menu-main-course{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30px;
+    border-bottom: 1px black dashed;
+}
+button{
+    text-transform: uppercase;
+    height: 60px;
+    width: 120px;
+    border-radius: 2px;
+    border-width: 1px;
+    background-color: white;
+    border-color: black;
+}
+button:hover{
+    cursor: pointer;
+}
+.menu-appetizers-info , .menu-beverages-info , .menu-main-course-info{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.go-to-bill{
+  display: block;
+  margin: 0 auto;
+}

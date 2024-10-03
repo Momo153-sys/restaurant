@@ -1,0 +1,29 @@
+.bill-system-title{
+    text-align: center;
+}
+header{
+    height: 70px;
+    border-bottom: 1px black dashed;
+    margin-bottom: 50px;
+}
+#bill{
+    margin: 0 auto;
+    width: 40%;
+    border: 1px black solid;
+    padding-bottom: 10px;
+}
+.food-row{
+    display: flex;
+    justify-content: space-around;
+}
+h3{
+    text-align: center;
+}
+.total-line{
+    border-top: 1px black solid;
+}
+.waiter-time-date{
+    margin-bottom: 10px;
+    border-bottom: 1px black solid;
+    padding-bottom: 20px;
+}

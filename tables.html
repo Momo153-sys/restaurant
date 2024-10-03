@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tables.css">
+    <title>Tables</title>
+</head>
+<body>
+    <header>
+        <h1 class="tables-system-title">Welcome to the Restaurant's Tables System !</h1>
+    </header>
+    <div class="garden-tables-info">
+        <h2 class="garden-tables-title">Garden Area</h2>
+        <div class="garden-tables">
+           <div> <button class="table-1" onclick="choose_table('Table 1')">Table 1</button></div> 
+            <div><button class="table-2" onclick="choose_table('Table 2')">Table 2</button> </div>
+           <div> <button class="table-3 " onclick="choose_table('Table 3')">Table 3</button></div> 
+           <div> <button class="table-4" onclick="choose_table('Table 4')">Table 4</button></div> 
+           <div> <button class="table-5" onclick="choose_table('Table 5')">Table 5</button> </div> 
+            <div> <button class="table-6" onclick="choose_table('Table 6')">Table 6</button></div> 
+           <div><button class="table-7" onclick="choose_table('Table 7')">Table 7</button> </div> 
+        </div>
+    </div>
+    <div class="saloon-tables-info">
+        <h2 class="saloon-tables-title">Saloon Area</h2>
+        <div class="saloon-tables">
+           <div> <button class="table-8 " onclick="choose_table('Table 8')">Table 8</button></div> 
+           <div> <button class="table-9" onclick="choose_table('Table 9')">Table 9</button> </div>
+            <div><button class="table-10" onclick="choose_table('Table 10')">Table 10</button> </div>
+          <div><button class="table-11 "onclick="choose_table('Table 11')">Table 11</button> </div>  
+          <div> <button class="table-12" onclick="choose_table('Table 12')">Table 12</button> </div> 
+           <div> <button class="table-13" onclick="choose_table('Table 13')">Table 13</button></div> 
+           <div> <button class="table-14" onclick="choose_table('Table 14')">Table 14</button></div> 
+        </div>
+    </div>
+    <div class="backdoor-tables-info">
+        <h2 class="backdoor-tables-title">Backdoor Area</h2>
+        <div class="backdoor-tables">
+           <div><button class="table-15 " onclick="choose_table('Table 15')">Table 15</button> </div> 
+           <div> <button class="table-16" onclick="choose_table('Table 16')">Table 16</button></div> 
+           <div> <button class="table-17" onclick="choose_table('Table 17')">Table 17</button></div> 
+           <div><button class="table-18" onclick="choose_table('Table 18')">Table 18</button> </div> 
+           <div> <button class="table-19" onclick="choose_table('Table 19')">Table 19</button></div> 
+          <div>  <button class="table-20" onclick="choose_table('Table 20')">Table 20</button></div> 
+           <div> <button class="table-21" onclick="choose_table('Table 21')">Table 21</button></div> 
+        </div>
+    </div>
+    <script>
+        const waiters={
+            code:["1234","1111","2323","0000","4321"],
+            name:["Lionel Messi","Mohamed Doumbia","Lebron James","Karim Abdul-Jabbar","John Cena"]
+        };
+        const waiter_code = document.getElementById("waiter-code");
+    let is_table_selected = false;
+function choose_table(table_number){
+    sessionStorage.setItem('table', table_number);
+    sessionStorage.setItem('is_table_selected',true);
+    create_passoword_box();
+}
+function create_passoword_box(){
+    const password_box = document.createElement('div');
+    password_box.innerHTML = "<h2>Enter your Secret Code</h2><br><input type='password' id='waiter-password'><br><button type='submit' id='waiter-code-button' onclick='check_waiter_info()''>Submit</button>";
+    password_box.classList.add('waiter-code');
+    document.body.appendChild(password_box);
+}
+function check_waiter_info(){
+    let is_waiter_registered;
+    const secret_code = document.getElementById("waiter-password");
+    for (let index = 0; index < waiters.code.length; index++) {
+        if (secret_code.value===waiters.code[index]) {
+            const name_waiter = waiters.name[index];
+            sessionStorage.setItem('waiter',name_waiter);
+            is_waiter_registered = true;
+            break;
+        }else{
+            is_waiter_registered = false;
+        }
+    }
+    if (is_waiter_registered) {
+        window.location.href = "menu.html";
+    } else {
+        alert("The waiter code you entered is not registered please try again!");
+    }
+}
+    </script>
+</body>
+</html>

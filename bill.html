@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bill.css">
+    <title>The Bill</title>
+</head>
+<body>
+    <header>
+        <h1 class="bill-system-title">Welcome to the Restaurant's Bill System !</h1>
+    </header>
+   <div id="bill">
+   </div>
+    <script>
+        let total=0;
+           const main_course ={
+    name:["cheeseburger", "cheese sandwich","chicken burgers", "spicy chicken", "hot dog"],
+    price:[34,22,23,33,24]
+};
+        const appetizers ={
+    name:["fruit salad", "cocktails","nuggets", "sandwich", "french fries"],
+    price:[13,12,14,13,15]
+};
+        const beverages ={
+    name:["milkshake", "iced tea","orange juice", "lemon tea", "coffee"],
+    price:[3,2,4,3,5]
+};
+        const waiter = sessionStorage.getItem('waiter').toLocaleUpperCase();
+        const meals = JSON.parse(sessionStorage.getItem('meal'));
+        const bill_title = document.createElement('h3');
+        bill_title.innerHTML = "BILL FOR "+sessionStorage.getItem('table');
+        document.getElementById('bill').appendChild(bill_title);
+        const waiter_name = document.createElement('div');
+        const date = new Date();
+        const today_date = date.toLocaleDateString();
+        const today_time = date.toLocaleTimeString();
+        waiter_name.innerHTML = `<div class = 'food-row waiter-time-date'> <div> Waiter: ${waiter}</div> <div> ${today_date} </div> <div>${today_time}</div> </div>`;
+        document.getElementById('bill').appendChild(waiter_name);
+        meals.forEach(element => {
+            let price;
+            for (let index = 0; index < 5; index++) {
+                const a = main_course.name[index];
+                const b = appetizers.name[index];
+                const c = beverages.name[index];
+                if (a===element) {
+                    price = main_course.price[index];
+                    total+=price;
+                    break;
+                }else if (b===element) {
+                    price = appetizers.price[index];
+                    total+=price;
+                    break;
+                }else if (c===element) {
+                    price = beverages.price[index];
+                    total+=price;
+                    break;
+                }
+            }
+            const new_meal = document.createElement('div');
+            new_meal.classList.add('food-row');
+            new_meal.innerHTML = "<p class='food-name'>"+element+"</p> <p class='food-unit'>1</p> <p class='food-price'>$"+price+"</p>";
+            document.getElementById('bill').appendChild(new_meal);
+        });
+        const food_total = document.createElement('div');
+        food_total.classList.add('food-row','total-line');
+        food_total.innerHTML = "<p> TOTAL </p><p>"+ meals.length+"</p><p>$"+total+"</p>";
+        document.getElementById('bill').appendChild(food_total);
+    </script>
+</body>
+</html>

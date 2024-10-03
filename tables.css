@@ -1,0 +1,47 @@
+.tables-system-title{
+    text-align: center;
+    padding-bottom: 10px;
+}
+header{
+    height: 60px;
+    border-bottom: 1px black dashed;
+}
+.garden-tables-info , .backdoor-tables-info , .saloon-tables-info{
+    margin-top: 40px;
+    position: relative;
+    z-index: 1;
+}
+.garden-tables ,.saloon-tables , .backdoor-tables{
+    display: flex;
+    justify-content: space-between;
+}
+button{
+    text-transform: uppercase;
+    height: 60px;
+    width: 120px;
+    border-radius: 2px;
+    border-width: 1px;
+    background-color: white;
+    border-color: black;
+}
+button:hover{
+    cursor: pointer;
+}
+.waiter-code{
+    border: 1px black solid;
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    left: 25%;
+    top: 20%;
+    z-index: 2;
+    background-color: white;
+    text-align: center;
+}
+
+#waiter-code-button{
+    margin-top: 50px;
+}
+#waiter-password{
+    height: 50px;
+}
